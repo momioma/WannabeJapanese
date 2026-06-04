@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本かぶれ検定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+<div class="content">
+
+  <!-- カットインオーバーレイ（正解時のフラッシュ） -->
+  <div id="cutin" class="cutin">
+    <img id="cutin-img" src="">
+  </div>
+
+
+  <!-- ============================================================
+    画面①：タイトル画面（Vue不使用、普通のHTML）
+  ============================================================ -->
+
+  <!-- ============================================================
+    画面②：クイズ画面
+
+    id="vue-quiz" がVueアプリのマウント先。
+    この中はすべてVueが管理する（getElementById は使わない）。
+
+    【表示の切り替え方】
+    ・問題の内容    → {{ }} で直接バインド。Vueが自動で更新。
+    ・選択肢⇔解説  → v-if="!answered" / v-else で切り替え。
+    ・コマのスライド → <Transition :key="currentQ"> で発動。
+                       currentQ が変わると「別の要素」とVueが判断し
+                       leave→enter アニメーションが自動で走る。
+  ============================================================ -->
+  <div id="screen-quiz" class="screen active">
+
+    <div id="vue-quiz">
+      <Transition name="comic" mode="out-in">
+
+        <!--
+          :key="currentQ" がポイント。
+          currentQ が 0→1→2 と変わるたびにこのdiv全体が
+          「別の要素」として作り直され、Transitionが発動する。
+        -->
+        <div :key="currentQ" class="comic-frame">
+          <div class="page-frame sketchy-frame">
+            <!-- メインパネル：イラスト -->
+            <div class="main-panel illust-panel">
+              <!--
+                illustSrc は computed で計算する。
+                選択前→問題のimg、選択後→選択肢のimg。
+                imgが空文字の場合はプレースホルダーを表示。
+              -->
+              <img v-if="illustSrc" :src="illustSrc" alt="問題のイラスト">
+              <div v-else class="illust-placeholder">🎌</div>
+            </div>
+
+            <!-- 右上カード：Q番号とシーン -->
+            <div class="q-card sketchy-frame">
+              <!-- {{ }} でVueのデータを直接表示 -->
+              <span class="q-num">Q.{{ currentQ + 1 }}</span>
+              <span class="q-scene">{{ currentQuestion.scene }}</span>
+              <span class="q-question">{{currentQuestion.question}}</span>
+            </div>
+
+            <!-- 左下バブル -->
+            <div class="answer-bubble sketchy-frame">
+              <div class="bubble-tail">
+                <div class="tail-ring"></div>
+                <div class="tail-dot"></div>
+              </div>
+
+              <!--
+                選択前（answered が false）→ 選択肢を表示
+                選択後（answered が true）  → 解説を表示
+                selectedIndex は選択肢クリック直後にセットされ、
+                ボタンの色付けに使う。answeredより先にセットされる。
+              -->
+
+              <!-- 選択肢（answered が false のあいだ表示） -->
+              <div v-if="!answered" class="choices">
+                <button
+                  v-for="(choice, i) in currentQuestion.choices"
+                  :key="i"
+                  :class="choiceBtnClass(i)"
+                  :disabled="selectedIndex !== null"
+                  @click="selectAnswer(i)"
+                >{{ choice.text }}</button>
+              </div>
+
+              <!-- 解説（answered が true になったら表示） -->
+              <div v-else class="explanation-in-bubble">
+                <span class="exp-icon">{{ expIcon }}</span>
+                <div class="exp-body">
+                  <p>{{ currentQuestion.explanation }}</p>
+                  <button class="next-btn" @click="nextQuestion">次へ ▶</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </Transition>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+    画面③：結果画面（Vue不使用、普通のHTML）
+    script.js の showResult() が getElementById で値を書き込む
+  ============================================================ -->
+  <div id="screen-result" class="screen">
+    <div class="page-frame sketchy-frame">
+
+      <div class="main-panel result-panel">
+        <div class="result-inner">
+          <p class="result-eyebrow">YOUR RESULT</p>
+          <div class="result-score-wrap">
+            <span id="result-score-num" class="result-score-num">0</span>
+            <span class="result-score-unit">点</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-card result-card sketchy-frame">
+        <span class="q-card-label">RESULT</span>
+        <span id="result-icon" class="result-card-icon">🎌</span>
+      </div>
+
+      <div class="answer-bubble result-bubble sketchy-frame">
+        <div class="bubble-tail">
+          <div class="tail-ring"></div>
+          <div class="tail-dot"></div>
+        </div>
+        <h2 id="result-title" class="result-title"></h2>
+        <p id="result-desc" class="result-desc"></p>
+        <button class="start-btn" onclick="restartQuiz()">▶ もう一度挑戦する</button>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
