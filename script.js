@@ -153,7 +153,7 @@ const vueApp = Vue.createApp({
       this.choiceIllust  = choice.img || '';
 
       showCutin(
-        choice.isCorrect ? 'correct.png' : 'false.png',
+        choice.isCorrect ? 'correct.PNG' : 'false.PNG',
         choice.isCorrect
       );
 
