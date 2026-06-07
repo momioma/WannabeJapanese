@@ -8,9 +8,9 @@
     （ページ読み込み直後に登録 → 最初のクリックでBGM再生）
 ============================================================ */
 
-const soundCorrect = new Audio('sounds/Inspiration06-1(Low).mp3');
-const soundWrong   = new Audio('sounds/Single_Accent19-1(Delay-Fast).mp3');
-const bgm          = new Audio('sounds/Loop02-long.mp3');
+const soundCorrect = new Audio('Inspiration06-1(Low).mp3');
+const soundWrong   = new Audio('Single_Accent19-1(Delay-Fast).mp3');
+const bgm          = new Audio('Loop02-long.mp3');
 bgm.loop   = true;
 bgm.volume = 0.2;
 
@@ -25,10 +25,10 @@ const questions = [
   {
     scene:    "コンビニのレシート、受け取る？",
     question: "Do you take your convenience store receipt?",
-    img: "img/1-1.PNG",
+    img: "1-1.PNG",
     choices: [
-      { text: "受け取る Receive",    score: 1, img: "img/1-2.PNG", isCorrect: true  },
-      { text: "受け取らない Do not agree", score: 0, img: "img/1-2.PNG", isCorrect: false },
+      { text: "受け取る Receive",    score: 1, img: "1-2.PNG", isCorrect: true  },
+      { text: "受け取らない Do not agree", score: 0, img: "1-2.PNG", isCorrect: false },
     ],
     explanation: "日本人には「来るもの拒まず」のマインドが刻まれています。たとえいらなくても受け取るのが日本人というものでしょう。受け取った直後にレシート入れに入れるのがベスト・ジャパニーズ仕草です。",
     explanation_en: "The Japanese have a deep-rooted mindset of \"never turning away a gift.\" It's just the Japanese way to accept something even if they don't need it. If they truly don't want it, the quintessential Japanese gesture is to toss it into the receipt holder immediately after receiving it.",
@@ -36,12 +36,12 @@ const questions = [
   {
     scene:    "知り合いとすれ違った時の挨拶はどうする？",
     question: "How should you greet someone you run into?",
-    img: "img/2-1.PNG",
+    img: "2-1.PNG",
     choices: [
-      { text: "おじぎ Bow",       score: 0, img: "img/2-2.PNG", isCorrect: false },
-      { text: "ハグ Hug",         score: 0, img: "img/2-2.PNG", isCorrect: false },
-      { text: "ハイタッチ High five",   score: 0, img: "img/2-2.PNG", isCorrect: false },
-      { text: "首だけおじぎ A nod of the head", score: 1, img: "img/2-2.PNG", isCorrect: true  },
+      { text: "おじぎ Bow",       score: 0, img: "2-2.PNG", isCorrect: false },
+      { text: "ハグ Hug",         score: 0, img: "2-2.PNG", isCorrect: false },
+      { text: "ハイタッチ High five",   score: 0, img: "2-2.PNG", isCorrect: false },
+      { text: "首だけおじぎ A nod of the head", score: 1, img: "2-2.PNG", isCorrect: true  },
     ],
     explanation: "忍者の末裔である日本人はすべての動きを最小限にするようにします。仲が良ければ良いほど、動きは小さくなっていくでしょう。目上の人には、腰からお辞儀をすると好印象ジャパニーズです。",
     explanation_en: "As descendants of ninjas, Japanese people strive to keep their movements to a minimum. The closer the relationship, the smaller the movements tend to be. When bowing to someone older or in a position of authority, bowing from the waist is considered a good way to make a positive impression.",
@@ -49,12 +49,12 @@ const questions = [
   {
     scene:    "正しいエスカレーターの乗り方はどれ？",
     question: "Which is the correct way to use an escalator?",
-    img: "img/3-1.PNG",
+    img: "3-1.PNG",
     choices: [
-      { text: "右 Right",         score: 0, img: "img/3-2.PNG", isCorrect: false },
-      { text: "左 Left",         score: 0, img: "img/3-2.PNG", isCorrect: false },
-      { text: "場合による It depends", score: 1, img: "img/3-2.PNG", isCorrect: true  },
-      { text: "両方 Both",       score: 0, img: "img/3-2.PNG", isCorrect: false },
+      { text: "右 Right",         score: 0, img: "3-2.PNG", isCorrect: false },
+      { text: "左 Left",         score: 0, img: "3-2.PNG", isCorrect: false },
+      { text: "場合による It depends", score: 1, img: "3-2.PNG", isCorrect: true  },
+      { text: "両方 Both",       score: 0, img: "3-2.PNG", isCorrect: false },
     ],
     explanation: "白か黒かは選ばない日本人はその時その場によって乗り方を変えます。基本的に東日本は左側、西日本は右側に乗ります。しかし、柔軟な日本人でも、両側立ちが推奨されているのに常に片側に乗り続けます。いつも急いでエスカレーターを渡りたい人へ道を開けておくのです。",
     explanation_en: "Rather than choosing strictly between black and white, Japanese people adapt their behavior depending on the situation at hand. Generally speaking, people stand on the left in eastern Japan and on the right in western Japan. However, even the most flexible Japanese people tend to stay on one side, despite the recommendation to stand on both sides. This is to keep the path clear for those who are in a hurry to get across the escalator.",
@@ -62,12 +62,12 @@ const questions = [
   {
     scene:    "電車のどの席に乗るのが正解？",
     question: "Which seat on the train is the best choice?",
-    img: "img/4-1.PNG",
+    img: "4-1.PNG",
     choices: [
-      { text: "1", score: 0, img: "img/4-2.PNG", isCorrect: false },
-      { text: "2", score: 0, img: "img/4-2.PNG", isCorrect: false },
-      { text: "3", score: 1, img: "img/4-2.PNG", isCorrect: true  },
-      { text: "4", score: 0, img: "img/4-2.PNG", isCorrect: false },
+      { text: "1", score: 0, img: "4-2.PNG", isCorrect: false },
+      { text: "2", score: 0, img: "4-2.PNG", isCorrect: false },
+      { text: "3", score: 1, img: "4-2.PNG", isCorrect: true  },
+      { text: "4", score: 0, img: "4-2.PNG", isCorrect: false },
     ],
     explanation: "電車と仲良しな日本人は座っている人の隣に妖精が見えます。妖精さんの席は開けて一個空けて座るのがマナーです。2でも良いのですが、先に真ん中を取りに行かないのがジャパニーズ仕草というものです。",
     explanation_en: "Japanese people, who are very fond of trains, can see a fairy sitting next to every person who is already seated. It is considered good manners to leave one seat open between yourself and the fairy. It's fine to take the second seat, but the \"Japanese way\" is to avoid rushing to take the middle seat first.",
@@ -75,12 +75,12 @@ const questions = [
   {
     scene:    "日本人が誰かと喜びを分かち合うときは…",
     question: "What do Japanese people do when they want to share their joy with someone?",
-    img: "img/5-1.PNG",
+    img: "5-1.PNG",
     choices: [
-      { text: "おじぎ Bow",       score: 0, img: "img/5-2.PNG", isCorrect: false },
-      { text: "ダンス Dance",       score: 0, img: "img/5-2.PNG", isCorrect: false },
-      { text: "LINEスタンプ LINE Stickers", score: 0, img: "img/5-2.PNG", isCorrect: false },
-      { text: "詩を詠む Recite a poem",     score: 1, img: "img/5-2.PNG", isCorrect: true  },
+      { text: "おじぎ Bow",       score: 0, img: "5-2.PNG", isCorrect: false },
+      { text: "ダンス Dance",       score: 0, img: "5-2.PNG", isCorrect: false },
+      { text: "LINEスタンプ LINE Stickers", score: 0, img: "5-2.PNG", isCorrect: false },
+      { text: "詩を詠む Recite a poem",     score: 1, img: "5-2.PNG", isCorrect: true  },
     ],
     explanation: "雅な日本人は詩を詠む訓練をどの時代もしてきました。日本を知り尽くしたアナタなら詩の一つ詠めるはず。",
     explanation_en: "Throughout history, cultured Japanese people have always practiced composing poetry. Since you know Japan so well, you should be able to compose a poem or two.",
@@ -88,12 +88,12 @@ const questions = [
   {
     scene:    "日本人ならパスタはどれを使って食べる？",
     question: "What kind of cutlery do Japanese people use when eating?",
-    img: "img/6-1.PNG",
+    img: "6-1.PNG",
     choices: [
-      { text: "スプーン Spoon", score: 0, img: "img/6-2.PNG", isCorrect: false },
-      { text: "フォーク Fork", score: 0, img: "img/6-2.PNG", isCorrect: false },
-      { text: "箸 chopsticks",       score: 1, img: "img/6-2.PNG", isCorrect: true  },
-      { text: "手 Hand",       score: 0, img: "img/6-2.PNG", isCorrect: false },
+      { text: "スプーン Spoon", score: 0, img: "6-2.PNG", isCorrect: false },
+      { text: "フォーク Fork", score: 0, img: "6-2.PNG", isCorrect: false },
+      { text: "箸 chopsticks",       score: 1, img: "6-2.PNG", isCorrect: true  },
+      { text: "手 Hand",       score: 0, img: "6-2.PNG", isCorrect: false },
     ],
     explanation: "真の日本人ならどんな料理でも箸を使い食事をするべきです！麺を啜るかの如くパスタもズルズル食べるのです！皆さんに日本で培ったジャパニーズ食事スタイルを見せてやりましょう！",
     explanation_en: "If you're a true Japanese person, you should eat any kind of food with chopsticks! Slurp up your pasta just like you would noodles! Let's all show them the Japanese dining style we've perfected here in Japan!",
@@ -208,12 +208,12 @@ function showResult(score) {
   document.getElementById('result-desc').textContent  = result.desc;
 
   const resultImages = [
-    'img/1-2.PNG',
-    'img/2-2.PNG',
-    'img/3-2.PNG',
-    'img/4-2.PNG',
-    'img/5-2.PNG',
-    'img/6-2.PNG',
+    '1-2.PNG',
+    '2-2.PNG',
+    '3-2.PNG',
+    '4-2.PNG',
+    '5-2.PNG',
+    '6-2.PNG',
   ];
   const picked = resultImages[Math.floor(Math.random() * resultImages.length)];
   document.getElementById('result-bg-img').src = picked;
