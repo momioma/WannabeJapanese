@@ -28,13 +28,18 @@ html, body {
   font-weight: 400;
   font-style: normal;
 }
-.potta-one-regular {
-  font-family: "Potta One", system-ui;
+.Ronde-B-Square{
+  font-family: "ronde-b", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.ADS-type7Regular{
+  font-family: "ads-type7", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 body {
-  font-family: "Kiwi Maru", serif;
+  font-family: "ads-type7", serif;
   font-size:x-large;
   background: var(--bg);
   color: var(--ink);
@@ -396,3 +401,8 @@ body {
 	0% { background-position: 50% 0%; }
 	100% { background-position: 50% 100%; }
 }
+
+
+
+
+
