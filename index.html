@@ -5,70 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>日本かぶれ検定</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style_top.css">
+  <script>
+    (function(d) {
+      var config = { kitId: 'gbl6umr', scriptTimeout: 3000, async: true },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;
+      h.className+=" wf-loading";
+      tk.src='https://use.typekit.net/'+config.kitId+'.js';
+      tk.async=true;
+      tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};
+      s.parentNode.insertBefore(tk,s);
+    })(document);
+  </script>
 
   <style>
-    /* ============================================================
-      タイトル画面専用のスタイル
-      style.css の変数（--ink, --cream, --bg など）をそのまま使う
-    ============================================================ */
+    /* タイトルページ固有スタイル */
 
-    body {
-      overflow: hidden;
-
-    }
     .title-page-frame {
       width: 50em;
       height: 28em;
       position: relative;
-
     }
 
-    /* ============================================================
-      イラストエリア
-      画面いっぱいに広がる背景として配置
-    ============================================================ */
     .title-illust {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-
     }
     .title-illust img {
       height: auto;
       width: 1000px;
       position: absolute;
       top: -6em;
-      left: 17em;
+      left: 26em;
     }
-
-    /* ============================================================
-      テキスト群（絶対配置でコマの上に重ねる）
-    ============================================================ */
 
     .txt-title-ja {
       position: absolute;
       top: clamp(20px, 5%, 36px);
       left: clamp(20px, 5%, 36px);
-      font-family: 'Kiwi Maru' serif;  
+      font-family: 'ads-type7', serif;
       line-height: 1.3;
       letter-spacing: 0.12em;
       color: var(--ink);
       font-size: 4em;
     }
 
+    .txt-ja {
+      position: absolute;
+      top: 17em;
+      left: clamp(20px, 5%, 36px);
+      font-family: 'ads-type7', serif;
+      line-height: 1.3;
+      letter-spacing: 0.07em;
+      color: var(--ink);
+      font-size: 0.7em;
+      max-width: 36em;
+    }
+
     .txt-title-en {
       position: absolute;
       top: clamp(20px, 5%, 36px);
       right: clamp(20px, 5%, 36px);
-      font-family: var(--font-sans);
       font-size: clamp(14px, 2.2vw, 22px);
       font-weight: 700;
       line-height: 1.6;
@@ -79,42 +83,73 @@
 
     .title-btn-wrap {
       position: absolute;
-      bottom: clamp(18px, 5%, 32px);
-      right: clamp(20px, 5%, 36px);
+      left: 8em;
+      bottom: 2.5em;
     }
 
-    .title-cta {
-      display: inline-block;
-      padding: 14px 32px;
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--font-sans);
-      font-size: clamp(14px, 1.8vw, 18px);
+    h5 { font-size: 16px; }
+
+    /* ボタン（3Dシャドウ付き） */
+    .btn,
+    a.btn,
+    button.btn {
+      font-size: 3.6rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      border: none;
-      border-radius: 14px;
+      line-height: 1.5;
+      position: relative;
+      display: inline-block;
+      padding: 1rem 4rem;
       cursor: pointer;
+      user-select: none;
+      transition: all 0.3s;
+      text-align: center;
+      vertical-align: middle;
       text-decoration: none;
-      /* style.css の sketchy-frame と同じフィルター */
-      filter: url(#sketchy);
-      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      border-radius: 0.5rem;
     }
-    .title-cta:hover  { opacity: 0.82; }
-    .title-cta:active { transform: scale(0.95); }
+    a.btn-border {
+      margin-bottom: 12px;
+      padding: 0;
+      transition: all 0.3s;
+      border-radius: 0;
+    }
+    a.btn-border span {
+      position: relative;
+      display: block;
+      padding: 1.25rem 3rem;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 0.5rem;
+      background: var(--cream);
+    }
+    a.btn-border:before {
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 14px;
+      content: "";
+      transition: all 0.3s;
+      border: 2px solid var(--ink);
+      border-top: 1px solid var(--ink);
+      border-radius: 0 0 0.5rem 0.5rem;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        var(--ink), var(--ink) 1px,
+        transparent 2px, transparent 5px
+      );
+      background-size: 7px 7px;
+      backface-visibility: hidden;
+    }
+    a.btn-border:hover          { transform: translate(0, 3px);  }
+    a.btn-border:hover:before   { bottom: -5px; }
+    a.btn-border:active         { transform: translate(0, 7px);  }
+    a.btn-border:active:before  { bottom: -1px; }
 
-    /* ============================================================
-      ポップアップアニメーション
-      各要素に animation-delay をずらして順番に出現させる
-
-      ① .page-frame   フレームがふわっと拡大して出る
-      ② .txt-title-ja 左から滑り込む
-      ③ .txt-title-en 右から滑り込む
-      ④ .title-illust 下からふわっと上がる
-      ⑤ .title-cta    最後にポンと出る（バウンス）
-    ============================================================ */
-
-    /* ── ① フレーム全体 ── */
+    /* ── ポップアップアニメーション ── */
     .title-page-frame {
       animation: frameIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
@@ -123,7 +158,6 @@
       to   { opacity: 1; transform: scale(1);    }
     }
 
-    /* ── ② 日本語タイトル ── */
     .txt-title-ja {
       animation: slideFromLeft 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.2s both;
     }
@@ -132,7 +166,6 @@
       to   { opacity: 1; transform: translateX(0);     }
     }
 
-    /* ── ③ 英語タイトル ── */
     .txt-title-en {
       animation: slideFromRight 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.32s both;
     }
@@ -141,7 +174,6 @@
       to   { opacity: 1; transform: translateX(0);    }
     }
 
-    /* ── ④ イラスト ── */
     .title-illust {
       animation: illustUp 0.65s cubic-bezier(0.34, 1.3, 0.64, 1) 0.1s both;
     }
@@ -150,8 +182,8 @@
       to   { opacity: 1; transform: translateY(0);    }
     }
 
-    /* ── ⑤ ボタン（最後にバウンスで出る） ── */
-    .title-btn-wrap {
+    .title-btn-wrap,
+    .txt-ja {
       animation: btnBounce 0.6s cubic-bezier(0.34, 1.7, 0.64, 1) 0.55s both;
     }
     @keyframes btnBounce {
@@ -159,57 +191,147 @@
       to   { opacity: 1; transform: scale(1);   }
     }
 
-    /* ============================================================
-      レスポンシブ
-    ============================================================ */
-    @media (max-width: 600px) {
-      body { overflow-y: auto; }
+    /* ── レスポンシブ（スマホ） ── */
+    @media (max-width: 768px) {
+
+      body{
+        overflow: scroll;
+      }
+      .screen.active {
+        justify-content: flex-start;
+        padding: 24px 0 0;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+      }
 
       .title-page-frame {
-        width: 94vw;
+        width: 92vw;
         height: auto;
-        min-height: 72vw;
-        padding-bottom: 60px;
+        min-height: 0;
+        padding: 20px 16px 0;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
       }
 
-      .txt-title-ja { font-size: 20px; }
-      .txt-title-en { font-size: 12px; }
-
-      .title-cta {
-        font-size: 14px;
-        padding: 11px 22px;
+      /* タイトル（日本語）：通常フローの先頭 */
+      .txt-title-ja {
+        position: relative;
+        top: auto;
+        left: auto;
+        font-size: 2em;
+        margin-bottom: 4px;
       }
+
+      /* English：右上 absolute */
+      .txt-title-en {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        font-size: 11px;
+        text-align: right;
+      }
+
+      /* 説明文：タイトルの直下、全幅 */
+      .txt-ja {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        font-size: 0.45em;
+        line-height: 1.7;
+        max-width: 100%;
+        margin-bottom: 0;
+      }
+
+      /* イラスト：説明文の下、中央寄せ */
+      .title-illust {
+        position: relative;
+        inset: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        margin-top: 8px;
+        overflow: hidden;
+      }
+      .title-illust img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 75vw;
+        max-width: 340px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* ボタンエリア：フレームの外・下 */
+      .title-btn-wrap {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        right: auto;
+        margin-top: 16px;
+        padding-bottom: 20px;
+      }
+
+      a.btn-border {
+        display: block;
+        width: 100%;
+      }
+      a.btn-border span {
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 2.2rem;
+      }
+
+      h5 { font-size: 12px; margin-top: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .txt-title-ja     { font-size: 1.7em; }
+      .txt-title-en     { font-size: 9px; }
+      .title-illust img { width: 80vw; }
+      .txt-ja           { font-size: 0.4em; }
     }
   </style>
 </head>
 
 <body>
-
 <div class="content">
+
 
   <div class="screen active">
     <div class="page-frame sketchy-frame title-page-frame">
 
-      <!-- ④ イラスト（一番奥に置く。テキストが前面に来る） -->
       <div class="title-illust">
-        <img src="img/top.png" >
+        <img src="img/top.png" alt="タイトルイラスト">
       </div>
 
       <p class="txt-title-ja">
         日本かぶれ<br>検定
       </p>
 
+      <h6 class="txt-ja">
+        日本に来たあなたならきっと、この問題を解けるはず！<br>
+        お土産話といっしょに、日本のマナーについて見ていきましょう。<br>
+        If you've come all the way to Japan, you should definitely be able to solve this problem!<br>
+        Let's take a look at Japanese etiquette along with some travel stories.
+      </h6>
+
       <p class="txt-title-en">
-        Japanese<br>Culture<br>Quiz
+        Wannabe<br>Japanese<br>Test
       </p>
 
       <div class="title-btn-wrap">
-
-        <a href="quiz.html" class="title-cta">検定する</a>
+        <a href="quiz.html" class="btn btn-border"><span>検定する</span></a>
+        <h5>※音が出ます！<br>This site plays sound!<br>BGM,SE:OtoLogic</h5>
       </div>
 
     </div>
   </div>
+
 </div>
 </body>
 </html>
