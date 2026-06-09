@@ -547,7 +547,7 @@ body {
 
   /* ─── page-frame を flex縦積みコンテナに変換 ─── */
   .page-frame {
-    top: 0;           /* PCの top:-2.6em をリセット */
+    top: 3em;           /* PCの top:-2.6em をリセット */
     width: 92vw;
     height: auto;
     display: flex;
